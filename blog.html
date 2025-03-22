@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/Images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Blog - Côte des voix</title>
+    <link rel="stylesheet" href="styles/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="header-visible">
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="blog.html">Blog</a>
+            <a href="shop.html">Boutique</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Blog</h1>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Rechercher des articles...">
+            <button id="search-button" title="Rechercher">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+
+        <div id="loading" class="loading">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <span>Chargement...</span>
+            </div>
+        </div>
+
+        <div class="blog-container">
+            <!-- Blog posts will be dynamically inserted here by JavaScript -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Côte des voix. Tous droits réservés.</p>
+            <p>Créé par <a href="https://github.com/Patbrian" target="_blank" rel="noopener">Brian Mutuku</a></p>
+        </div>
+    </footer>
+
+    <script src="scripts/blog.js"></script>
+</body>
+</html>
