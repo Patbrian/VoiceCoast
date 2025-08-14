@@ -1,0 +1,221 @@
+# ========================================
+# VOICE COAST PROJECT - .gitignore
+# ========================================
+# 
+# This file ensures that sensitive information and unnecessary files
+# are never committed to version control.
+#
+# IMPORTANT: Never commit files containing:
+# - API keys and secrets
+# - Database credentials
+# - Environment variables
+# - Private configuration files
+# - User data and uploads
+# - Local development overrides
+#
+# ========================================
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Sensitive Configuration Files (IMPORTANT: Never commit these!)
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.csr
+*.pem
+*.p12
+*.pfx
+*.crt
+*.csr
+
+# Environment variables and sensitive data
+.env
+.env.local
+.env.*.local
+*.env
+config.js
+secrets.js
+secrets.json
+api-keys.js
+credentials.js
+auth.js
+
+# Build output
+dist/
+build/
+out/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Cache
+.cache/
+.temp/
+.tmp/
+
+# WordPress specific
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/backup*/
+wp-content/upgrade/
+wp-content/plugins/hello.php
+wp-content/plugins/akismet/
+
+# API and Service Configuration Files
+api-config.js
+api-config.json
+service-account.json
+firebase-config.js
+firebase-config.json
+google-services.json
+google-services.plist
+GoogleService-Info.plist
+
+# System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# Debug files
+*.log
+debug.log
+error_log
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+database.sql
+database.sqlite
+
+# Email and Contact Form Configuration
+email-config.js
+email-config.json
+smtp-config.js
+mailgun-config.js
+sendgrid-config.js
+
+# Social Media API Keys
+twitter-api.js
+instagram-api.js
+facebook-api.js
+social-config.js
+social-config.json
+
+# Payment and E-commerce
+stripe-config.js
+stripe-config.json
+paypal-config.js
+payment-config.js
+shop-config.js
+
+# Analytics and Tracking
+google-analytics.js
+analytics-config.js
+tracking-config.js
+gtag-config.js
+
+# CDN and Cloud Storage
+aws-config.js
+aws-config.json
+cloudinary-config.js
+cloudinary-config.json
+s3-config.js
+s3-config.json
+
+# Local Development
+local-config.js
+dev-config.js
+test-config.js
+staging-config.js
+
+# Development Tools and IDE
+.sass-cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary and Cache Files
+*.tmp
+*.temp
+*.cache
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage and Test Reports
+coverage/
+.nyc_output/
+test-results/
+junit.xml
+
+# Voice Coast Project Specific
+# Never commit these files as they may contain sensitive information
+products-local.json
+shop-config-local.js
+contact-form-local.js
+blog-config-local.js
+podcast-config-local.js
+
+# User Uploads and Generated Content
+uploads/
+user-uploads/
+generated/
+temp-uploads/
+
+# Backup and Archive Files
+backups/
+archives/
+*.zip
+*.tar.gz
+*.rar
+
+# Local Development Overrides
+local-overrides.css
+local-overrides.js
+local-styles.css
+local-scripts.js 

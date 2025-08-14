@@ -17,16 +17,35 @@ if (iconCart && closeCart) {
     });
 }
 
-// Scroll behavior for navigation
+// Navigation and scroll behavior
 document.addEventListener('DOMContentLoaded', () => {
-    let lastScrollY = window.scrollY;
     const nav = document.querySelector('.main-nav');
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    let lastScrollY = window.scrollY;
+
+    // Hamburger menu toggle
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+            }
+        });
+    }
     
+    // Scroll behavior
     if (nav) {
         window.addEventListener('scroll', () => {
             const currentScrollY = window.scrollY;
             
-            if (window.innerWidth <= 768) { // Only apply on mobile
+            if (window.innerWidth <= 768) {
                 if (currentScrollY > lastScrollY) {
                     nav.classList.remove('header-visible');
                     nav.classList.add('header-hidden');
@@ -182,12 +201,11 @@ const showPhoneNumberModal = () => {
     modal.classList.add('phone-modal');
     modal.innerHTML = `
         <div class="modal-content">
-            <h2>Complete Your Order</h2>
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="tel" id="phone" placeholder="Your Phone Number" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <button onclick="submitOrder()">Confirm Order</button>
-            <button onclick="closeModal()">Cancel</button>
+            <h2>Finaliser votre commande</h2>
+            <input type="text" id="name" placeholder="Votre nom" required>
+            <input type="tel" id="phone" placeholder="Votre numéro de téléphone" required>
+            <button onclick="submitOrder()">Acheter</button>
+            <button onclick="closeModal()">Annuler</button>
         </div>
     `;
     document.body.appendChild(modal);
@@ -203,9 +221,8 @@ const closeModal = () => {
 const submitOrder = () => {
     const name = document.querySelector('#name').value;
     const phone = document.querySelector('#phone').value;
-    const email = document.querySelector('#email').value;
-
-    if (!name || !phone || !email) {
+    
+    if (!name || !phone) {
         alert('Please fill in all fields');
         return;
     }
@@ -223,37 +240,35 @@ const submitOrder = () => {
 
     const totalAmount = orderDetails.reduce((sum, item) => sum + item.total, 0);
 
-    // Format order details for email
-    const orderItemsHTML = orderDetails.map(item => 
+    // Format order details for WhatsApp
+    const orderText = orderDetails.map(item => 
         `${item.name} x${item.quantity} - KES${item.total}`
-    ).join('<br>');
+    ).join('\n');
 
-    // Send email using EmailJS
-    emailjs.send(
-        'service_x9z28im', // We'll get this in step 3
-        'template_x7oapec', // We'll get this in step 3
-        {
-            to_name: 'Shop Owner',
-            from_name: name,
-            from_email: email,
-            phone_number: phone,
-            order_details: orderItemsHTML,
-            total_amount: `KES${totalAmount}`,
-        }
-    )
-    .then(() => {
-        alert('Thank you! Your order has been received. We will contact you shortly.');
-        cart = [];
-        addCartToHTML();
-        addCartToMemory();
-        updateCartCount();
-        closeModal();
-        body.classList.remove('showCart');
-    })
-    .catch((error) => {
-        console.error('Error sending order:', error);
-        alert('There was an error processing your order. Please try again.');
-    });
+    // Prepare WhatsApp message
+    const message = `New Order from ${name}\n\n` +
+        `Order Details:\n${orderText}\n\n` +
+        `Total Amount: KES${totalAmount}\n\n` +
+        `Customer Details:\nName: ${name}\nPhone: ${phone}`;
+
+    // WhatsApp number (replace with your business number)
+    const whatsappNumber = '254743244311'; 
+    
+    // Create WhatsApp link
+    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    
+    // Open WhatsApp
+    window.open(whatsappLink, '_blank');
+
+    // Clear cart and update UI
+    cart = [];
+    addCartToHTML();
+    addCartToMemory();
+    updateCartCount();
+    closeModal();
+    body.classList.remove('showCart');
+    
+    alert('Merci ! Votre commande a été envoyée via WhatsApp. Nous vous contacterons.');
 }
 
 // Add these styles

@@ -1,5 +1,5 @@
 async function fetchLatestPosts() {
-    const loading = document.getElementById('loading');
+    const loading = document.getElementById('blog-loading');
     const latestPosts = document.getElementById('latest-posts');
     
     try {
