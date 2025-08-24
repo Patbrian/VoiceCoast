@@ -1,7 +1,7 @@
-// Spotify API credentials
-const clientId = '03ee85035cae4bfeada30defb3a31dce';
-const clientSecret = 'ade1d4bbc1464ea797117d38d5725c18';
-const showId = '4G8qSFJJ1SNYoowvx3k8TP';
+// Spotify API credentials - Load from environment variables
+const clientId = process.env.SPOTIFY_CLIENT_ID;
+const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+const showId = process.env.SPOTIFY_SHOW_ID;
 const websiteUrl = 'https://cotedesvoix.com';
 
 // Function to get Spotify access token
