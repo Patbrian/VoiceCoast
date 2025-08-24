@@ -87,6 +87,13 @@ firebase-config.json
 google-services.json
 google-services.plist
 GoogleService-Info.plist
+*config.local.js
+*config.private.js
+.apikey
+.secret
+aws.json
+gcp.json
+azure.json
 
 # System Files
 .DS_Store
